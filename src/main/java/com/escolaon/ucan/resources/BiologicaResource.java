@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.escolaon.ucan.entities.Aluno;
-import com.escolaon.ucan.services.AlunoService;
+import com.escolaon.ucan.entities.Biologica;
+import com.escolaon.ucan.services.BiologicaService;
 
 @RestController
-@RequestMapping(value = "/alunos")
-public class AlunoResource {
+@RequestMapping(value = "/biologicas")
+public class BiologicaResource {
 	
 	@Autowired
-	private AlunoService service;
+	private BiologicaService service;
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Aluno>> findAll(){
+	public ResponseEntity<List<Biologica>> findAll(){
 		
-		List<Aluno> list = service.findAll();
+		List<Biologica> list = service.findAll();
 		
 		return ResponseEntity.ok().body(list);
 	}
 	
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Aluno> findById(@PathVariable Long id) {
-		Aluno obj = service.findById(id);
+	public ResponseEntity<Biologica> findById(@PathVariable Long id) {
+		Biologica obj = service.findById(id);
 		
 		return ResponseEntity.ok().body(obj);
 	}

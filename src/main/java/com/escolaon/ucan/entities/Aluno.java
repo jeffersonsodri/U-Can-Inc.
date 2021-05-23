@@ -2,16 +2,18 @@ package com.escolaon.ucan.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 
 
 @Entity
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -19,10 +21,15 @@ public class Aluno implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto Incremento para o bancod e dados
 	private Long id;
 	private String nome;
-	ArrayList<Curso> listaCursos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "aluno")
+	private List<Curso> listaCursos = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "alunoDis")
+	private List<Disciplina> listaDisciplina = new ArrayList<>();
 	
 	
-	public Aluno(Long id, String nome, ArrayList<Curso> listaCursos) {
+	public Aluno(Long id, String nome, List<Curso> listaCursos) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -47,14 +54,16 @@ public class Aluno implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public ArrayList<Curso> getListaCursos() {
+	
+	/**
+	 * Coleção somente o get
+	 * @return
+	 */
+	public List<Curso> getListaCursos() {
 		return listaCursos;
 	}
 
-	public void setListaCursos(ArrayList<Curso> listaCursos) {
-		this.listaCursos = listaCursos;
-	}
+
 
 	@Override
 	public int hashCode() {
