@@ -12,6 +12,7 @@ import com.escolaon.ucan.entities.Biologica;
 import com.escolaon.ucan.entities.Curso;
 import com.escolaon.ucan.repositories.AlunoRepository;
 import com.escolaon.ucan.repositories.BiologicaRepository;
+import com.escolaon.ucan.repositories.DisciplinaRepository;
 
 /**
  * 
@@ -27,6 +28,8 @@ public class TestConfig implements CommandLineRunner{
 	private AlunoRepository alunoRepository;
 	@Autowired
 	private BiologicaRepository biologicaRepository;
+	@Autowired
+	private DisciplinaRepository disciplinaRepository;
 	
 
 	@Override
