@@ -55,9 +55,9 @@ public class TestConfig implements CommandLineRunner{
 		Disciplina d4 = new Disciplina(null, "Cálculo", 5);
 		Disciplina d5 = new Disciplina(null, "Geometria", 3);
 		Disciplina d6 = new Disciplina(null, "Trigonometria", 8);
-		Disciplina d7 = new Disciplina(null, "Trigonometria", 8);
-		Disciplina d8 = new Disciplina(null, "Trigonometria", 8);
-		Disciplina d9 = new Disciplina(null, "Trigonometria", 8);
+		Disciplina d7 = new Disciplina(null, "Direito Civil", 8);
+		Disciplina d8 = new Disciplina(null, "Psicologia", 8);
+		Disciplina d9 = new Disciplina(null, "Filosofia", 8);
 		
 		
 		disciplinaRepository.saveAll(Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9));

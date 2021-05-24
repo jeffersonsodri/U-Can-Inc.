@@ -28,4 +28,8 @@ public class AlunoService {
 		return obj.get();
 	}
 	
+	public Aluno insert(Aluno obj) {
+		return repository.save(obj);
+	}
+	
 }

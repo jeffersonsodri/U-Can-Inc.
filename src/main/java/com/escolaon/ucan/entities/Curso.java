@@ -65,6 +65,8 @@ public abstract class Curso implements Serializable {
 		this.status = status;
 	}
 
+	
+	
 
 	@Override
 	public int hashCode() {
