@@ -23,12 +23,12 @@ public  class Biologica extends Curso implements Serializable	{
 	
 	
 	
-	public Biologica(long id, Aluno aluno, double media, String status, List<Disciplina> disciplinas) {
+	public Biologica(Long id, Aluno aluno, double media, String status, List<Disciplina> disciplinas) {
 		super(null, media, status, aluno, disciplinas);
 		this.id = id;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

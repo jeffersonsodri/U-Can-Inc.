@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -30,7 +32,10 @@ public class Aluno implements Serializable {
 	/**
 	 * Uma disciplina pode ser feita por vários alunos
 	 */
-	@ManyToMany(mappedBy = "alunos_disciplina")
+	@ManyToMany
+	@JoinTable(name = "tb_aluno_disciplina", 
+	joinColumns = @JoinColumn(name = "aluno_id"),
+	inverseJoinColumns = @JoinColumn(name = "disciplina_id"))
 	private List<Disciplina> disciplinas = new ArrayList<>();
 	
 	
@@ -47,8 +52,13 @@ public class Aluno implements Serializable {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
 	}
 
 	public String getNome() {

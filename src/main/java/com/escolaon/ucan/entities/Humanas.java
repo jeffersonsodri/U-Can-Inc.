@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Humanas extends Curso implements Serializable{
+public class Humanas extends Curso implements Serializable {
 
 	/**
 	 * 
@@ -23,12 +23,12 @@ public class Humanas extends Curso implements Serializable{
 	public Humanas() {}
 
 
-	public Humanas(long id, Aluno aluno, double media, String status, List<Disciplina> disciplinas) {
+	public Humanas(Long id, Aluno aluno, double media, String status, List<Disciplina> disciplinas) {
 		super(null, media, status, aluno, disciplinas);
 		this.id = id;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

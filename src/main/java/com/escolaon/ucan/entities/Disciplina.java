@@ -8,14 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "disciplina")
-public class Disciplina implements Serializable{
+public class Disciplina implements Serializable {
 	
 	/**
 	 * 
@@ -31,12 +31,10 @@ public class Disciplina implements Serializable{
 	
 	/**
 	 * Criando uma tabela de associação entre o aluno e Disciplina
-	 * @table tb_curso_disciplina
+	 * @table tb_aluno_disciplina
 	 */
-	@ManyToMany
-	@JoinTable(name = "tb_disciplina_aluno", 
-	joinColumns = @JoinColumn(name = "disciplina_id"),
-	inverseJoinColumns = @JoinColumn(name = "aluno_id"))
+	@JsonIgnore
+	@ManyToMany(mappedBy = "disciplinas")
 	private List<Aluno> alunos_disciplina = new ArrayList<>();
 	
 	/**
@@ -53,12 +51,18 @@ public class Disciplina implements Serializable{
 
 
 
-	public Long getId() {
-		return id;
+	public List<Aluno> getAlunos_disciplina() {
+		return alunos_disciplina;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setAlunos_disciplina(List<Aluno> alunos_disciplina) {
+		this.alunos_disciplina = alunos_disciplina;
+	}
+
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getNome() {
