@@ -13,7 +13,7 @@ import com.escolaon.ucan.entities.Humanas;
 import com.escolaon.ucan.services.HumanasService;
 
 @RestController
-@RequestMapping(value = "/Humanass")
+@RequestMapping(value = "/humanas")
 public class HumanasResource {
 	
 	@Autowired

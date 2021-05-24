@@ -13,7 +13,7 @@ import com.escolaon.ucan.entities.Disciplina;
 import com.escolaon.ucan.services.DisciplinaService;
 
 @RestController
-@RequestMapping(value = "/Disciplinas")
+@RequestMapping(value = "/disciplinas")
 public class DisciplinaResource {
 	
 	@Autowired

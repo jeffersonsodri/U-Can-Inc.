@@ -1,8 +1,8 @@
 package com.escolaon.ucan.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,34 +29,25 @@ public abstract class Curso implements Serializable {
 	private double media;
 	private String status;
 	
-	@ManyToOne
-	@JoinColumn(name = "alunoId")
-	private Aluno aluno;	
-	
+	@OneToOne
+	@JoinColumn(name = "aluno_id")
+	private Aluno aluno;
 	/**
 	 * Criando uma tabela de associação entre o curso e Disciplina
 	 * @table tb_curso_disciplina
 	 */
-	@ManyToMany
-	@JoinTable(name = "tb_curso_disciplina", 
-	joinColumns = @JoinColumn(name = "curso_id"),
-	inverseJoinColumns = @JoinColumn(name = "disicplina_id"))
-	private Set<Disciplina> disciplinas = new HashSet<>();
-	
-	
+		
 	
 	public Curso() {}
 
 
-	public Curso(Long id, double media, String status, Aluno aluno, Set<Disciplina> disciplinas) {
+	public Curso(Long id, double media, String status, Aluno aluno, List<Disciplina> disciplinas) {
 		super();
 		this.id = id;
 		this.media = media;
 		this.status = status;
 		this.aluno = aluno;
-		this.disciplinas = disciplinas;
 	}
-
 
 	public double getMedia() {
 		return media;
@@ -75,16 +66,6 @@ public abstract class Curso implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-
-	public Aluno getAluno() {
-		return aluno;
-	}
-
-
-	public void setAluno(Aluno aluno) {
-		this.aluno = aluno;
 	}
 
 

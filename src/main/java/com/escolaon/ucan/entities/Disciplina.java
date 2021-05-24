@@ -1,16 +1,16 @@
 package com.escolaon.ucan.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,20 +27,31 @@ public class Disciplina implements Serializable{
 	private String nome;
 	private double nota;
 	
-	@ManyToOne
-	@JoinColumn(name = "aluno_id")
-	private Aluno alunoDis;
+
 	
 	/**
-	 * Uma disciplina pode ser dada em vários cursos
+	 * Criando uma tabela de associação entre o aluno e Disciplina
+	 * @table tb_curso_disciplina
 	 */
-	@ManyToMany(mappedBy = "disciplinas")
-	private Set<Curso> cursos = new HashSet<>();
+	@ManyToMany
+	@JoinTable(name = "tb_disciplina_aluno", 
+	joinColumns = @JoinColumn(name = "disciplina_id"),
+	inverseJoinColumns = @JoinColumn(name = "aluno_id"))
+	private List<Aluno> alunos_disciplina = new ArrayList<>();
 	
 	/**
 	 * Construtor vazio
 	 */
 	public Disciplina() {}
+
+	
+	public Disciplina(Long id, String nome, double nota) {
+		this.id = id;
+		this.nome = nome;
+		this.nota = nota;
+	}
+
+
 
 	public Long getId() {
 		return id;
@@ -66,18 +77,7 @@ public class Disciplina implements Serializable{
 		this.nota = nota;
 	}
 
-	public Aluno getAlunoDis() {
-		return alunoDis;
-	}
 
-	public void setAlunoDis(Aluno alunoDis) {
-		this.alunoDis = alunoDis;
-	}
-
-	public Set<Curso> getCursos() {
-		return cursos;
-	}
-	
 	
 	
 	

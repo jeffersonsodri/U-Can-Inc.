@@ -13,7 +13,7 @@ import com.escolaon.ucan.entities.Exatas;
 import com.escolaon.ucan.services.ExatasService;
 
 @RestController
-@RequestMapping(value = "/Exatass")
+@RequestMapping(value = "/exatas")
 public class ExatasResource {
 	
 	@Autowired

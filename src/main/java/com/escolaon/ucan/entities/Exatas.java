@@ -1,14 +1,18 @@
 package com.escolaon.ucan.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "curso")
+@Table(name = "exatas")
 public class Exatas extends Curso implements Serializable{
 
 	
@@ -17,13 +21,12 @@ public class Exatas extends Curso implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;	
-	
+		
 	public Exatas() {
 	}
 	
-	
-	public Exatas(long id, double nota) {
-		super();
+	public Exatas(long id, Aluno aluno, double media, String status, List<Disciplina> disciplinas) {
+		super(null, media, status, aluno, disciplinas);
 		this.id = id;
 	}
 
@@ -58,12 +61,5 @@ public class Exatas extends Curso implements Serializable{
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-	
 	
 }

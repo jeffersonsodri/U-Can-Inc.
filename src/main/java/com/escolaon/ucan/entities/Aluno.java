@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -25,12 +26,15 @@ public class Aluno implements Serializable {
 	@OneToMany(mappedBy = "aluno")
 	private List<Curso> listaCursos = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "alunoDis")
-	private List<Disciplina> listaDisciplina = new ArrayList<>();
+	
+	/**
+	 * Uma disciplina pode ser feita por vários alunos
+	 */
+	@ManyToMany(mappedBy = "alunos_disciplina")
+	private List<Disciplina> disciplinas = new ArrayList<>();
 	
 	
 	public Aluno(Long id, String nome, List<Curso> listaCursos) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.listaCursos = listaCursos;
