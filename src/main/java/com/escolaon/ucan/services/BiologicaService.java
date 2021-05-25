@@ -11,25 +11,25 @@ import com.escolaon.ucan.repositories.BiologicaRepository;
 
 @Service
 public class BiologicaService {
-	
+
 	/**
 	 * Dependencia injetada automaticamente com @Autowired
 	 */
 	@Autowired
-	private BiologicaRepository repository; 
-	
+	private BiologicaRepository repository;
+
 	public List<Biologica> findAll() {
 		return repository.findAll();
 	}
-	
+
 	public Biologica findById(Long id) {
 		Optional<Biologica> obj = repository.findById(id);
-		
+
 		return obj.get();
 	}
-	
+
 	public Biologica insert(Biologica obj) {
 		return repository.save(obj);
 	}
-	
+
 }

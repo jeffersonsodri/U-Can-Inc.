@@ -22,51 +22,47 @@ import com.escolaon.ucan.services.AlunoService;
 @Controller
 @RequestMapping(value = "/alunos")
 public class AlunoResource {
-	
+
 	@Autowired
 	private AlunoService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Aluno>> findAll(){
-		
+	public ResponseEntity<List<Aluno>> findAll() {
+
 		List<Aluno> list = service.findAll();
-		
+
 		return ResponseEntity.ok().body(list);
 	}
-	
-	 @RequestMapping(value = "/{id}",  method = RequestMethod.GET)
-     public ResponseEntity<Aluno> listaCursos(@PathVariable Long id) {
-           Aluno a1 = service.findById(id);
-           return ResponseEntity.ok().body(a1); 
-     }
-	 
-	 
-	 @RequestMapping("/cadastroDeAluno")
-	   public ModelAndView cadastroDeAluno(){
-	   return new ModelAndView("cadastroDeAluno");
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Aluno> listaCursos(@PathVariable Long id) {
+		Aluno a1 = service.findById(id);
+		return ResponseEntity.ok().body(a1);
 	}
-	
-	
+
+	@RequestMapping("/cadastroDeAluno")
+	public ModelAndView cadastroDeAluno() {
+		return new ModelAndView("cadastroDeAluno");
+	}
+
 //	@GetMapping(value = "/{id}")
 //	public ResponseEntity<Aluno> findById(@PathVariable Long id) {
 //		Aluno obj = service.findById(id);
 //		
 //		return ResponseEntity.ok().body(obj);
 //	}
-	
+
 	@PostMapping
-	public ResponseEntity<Aluno> insert (@RequestBody Aluno obj) {
+	public ResponseEntity<Aluno> insert(@RequestBody Aluno obj) {
 		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-				path("/{id}").buildAndExpand(obj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-	
+
 }

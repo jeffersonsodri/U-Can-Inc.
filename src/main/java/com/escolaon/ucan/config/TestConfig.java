@@ -20,14 +20,13 @@ import com.escolaon.ucan.repositories.HumanasRepository;
 
 /**
  * 
- * @author Jefferson Souza Rodrigues
- * Perfil de teste de configuração 
- * Dependencia com a classe do Repositories
+ * @author Jefferson Souza Rodrigues Perfil de teste de configuração Dependencia
+ *         com a classe do Repositories
  */
 @Configuration
 @Profile("test")
-public class TestConfig implements CommandLineRunner{
-	
+public class TestConfig implements CommandLineRunner {
+
 	@Autowired
 	private AlunoRepository alunoRepository;
 	@Autowired
@@ -38,17 +37,14 @@ public class TestConfig implements CommandLineRunner{
 	private ExatasRepository exatasRepository;
 	@Autowired
 	private HumanasRepository humanasRepository;
-	
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		
+
 		Aluno a1 = new Aluno(null, "Suellen", null);
 		Aluno a2 = new Aluno(null, "Jefferson", null);
 		Aluno a3 = new Aluno(null, "Cesinha", null);
 
-		
 		Disciplina d1 = new Disciplina(null, "Aerobiologia", 10);
 		Disciplina d2 = new Disciplina(null, "Anatomia", 10);
 		Disciplina d3 = new Disciplina(null, "Antropologia", 10);
@@ -58,11 +54,10 @@ public class TestConfig implements CommandLineRunner{
 		Disciplina d7 = new Disciplina(null, "Direito Civil", 8);
 		Disciplina d8 = new Disciplina(null, "Psicologia", 8);
 		Disciplina d9 = new Disciplina(null, "Filosofia", 8);
-		
-		
+
 		disciplinaRepository.saveAll(Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9));
 		alunoRepository.saveAll(Arrays.asList(a1, a2, a3));
-		
+
 		a1.getDisciplinas().add(d1);
 		a1.getDisciplinas().add(d2);
 		a1.getDisciplinas().add(d3);
@@ -72,25 +67,20 @@ public class TestConfig implements CommandLineRunner{
 		a2.getDisciplinas().add(d1);
 		a2.getDisciplinas().add(d2);
 		a2.getDisciplinas().add(d3);
-		
-		
+
 		alunoRepository.saveAll(Arrays.asList(a1, a2));
 
-		Biologica c1 = new Biologica(0L, a1, 7.3 , "APROVADO", Arrays.asList(d1,d2,d3));
-		Biologica c2 = new Biologica(0L, a2, 5, "REPROVADO", Arrays.asList(d1,d2,d3));
-		Biologica c3 = new Biologica(0L, a3, 8, "APROVADO", Arrays.asList(d1,d2,d3));
-		
-		Exatas e1 = new Exatas(0L, a1, 8, "APROVADO", Arrays.asList(d4,d5,d6));
-		
-		Humanas h1 = new Humanas(0L, a3, 6, "REPROVADO", Arrays.asList(d7,d8,d9));
-		
-		
-		
+		Biologica c1 = new Biologica(0L, a1, 7.3, "APROVADO", Arrays.asList(d1, d2, d3));
+		Biologica c2 = new Biologica(0L, a2, 5, "REPROVADO", Arrays.asList(d1, d2, d3));
+		Biologica c3 = new Biologica(0L, a3, 8, "APROVADO", Arrays.asList(d1, d2, d3));
+
+		Exatas e1 = new Exatas(0L, a1, 8, "APROVADO", Arrays.asList(d4, d5, d6));
+
+		Humanas h1 = new Humanas(0L, a3, 6, "REPROVADO", Arrays.asList(d7, d8, d9));
+
 		biologicaRepository.saveAll(Arrays.asList(c1, c2, c3));
 		exatasRepository.saveAll(Arrays.asList(e1));
 		humanasRepository.saveAll(Arrays.asList(h1));
 	}
-	
-	
-	
+
 }
