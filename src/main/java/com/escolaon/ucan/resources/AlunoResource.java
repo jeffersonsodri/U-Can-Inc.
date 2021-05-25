@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escolaon.ucan.entities.Aluno;
@@ -39,10 +40,11 @@ public class AlunoResource {
            return ResponseEntity.ok().body(a1); 
      }
 	 
-	 @RequestMapping(value = "/cadastroDeAluno", method = RequestMethod.GET)
-	 public String cadastroAluno(){
-		   return "cadastroDeAluno";
-		}
+	 
+	 @RequestMapping("/cadastroDeAluno")
+	   public ModelAndView cadastroDeAluno(){
+	   return new ModelAndView("cadastroDeAluno");
+	}
 	
 	
 //	@GetMapping(value = "/{id}")
