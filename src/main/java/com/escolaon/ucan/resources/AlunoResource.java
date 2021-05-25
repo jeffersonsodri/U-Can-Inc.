@@ -40,9 +40,12 @@ public class AlunoResource {
 		return ResponseEntity.ok().body(a1);
 	}
 
-	@RequestMapping("/cadastroDeAluno")
+	@RequestMapping("/listaAlunos")
 	public ModelAndView cadastroDeAluno() {
-		return new ModelAndView("cadastroDeAluno");
+		ModelAndView mv = new ModelAndView("listaDeAlunos.html");
+		List<Aluno> listaalunos = service.findAll();
+		mv.addObject("alunos", listaalunos);
+		return mv;
 	}
 
 //	@GetMapping(value = "/{id}")
@@ -53,10 +56,10 @@ public class AlunoResource {
 //	}
 
 	@PostMapping
-	public ResponseEntity<Aluno> insert(@RequestBody Aluno obj) {
+	public ModelAndView insert(@RequestBody Aluno obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+		return new ModelAndView("redirect:/cadastroDeAluno");
 	}
 
 	@DeleteMapping(value = "/{id}")

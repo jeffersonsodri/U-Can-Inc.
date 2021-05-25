@@ -32,9 +32,11 @@ para baixar as dependências do projeto através do maven.
 
  Você também pode utilizar o _mvnw_ que vem no arquivo ZIP do mesmo jeito `mvnw clean install`.
 
- ## `5. Quinto passo - Execute a aplicação - `
+ ## `5. Quinto passo - Execute a aplicação `
 
  Execute o comando 
  > mvn spring-boot:run 
  
  para executar a sua aplicação. 
+ 
+ ## `6. Sexto passo - Abrir aplicação  `
