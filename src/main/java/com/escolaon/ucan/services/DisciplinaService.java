@@ -28,4 +28,8 @@ public class DisciplinaService {
 		return obj.get();
 	}
 	
+	public Disciplina insert(Disciplina obj) {
+		return repository.save(obj);
+	}
+	
 }

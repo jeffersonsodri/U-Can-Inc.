@@ -28,4 +28,8 @@ public class ExatasService {
 		return obj.get();
 	}
 	
+	public Exatas insert(Exatas obj) {
+		return repository.save(obj);
+	}
+	
 }

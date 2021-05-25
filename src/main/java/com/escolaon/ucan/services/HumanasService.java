@@ -28,4 +28,7 @@ public class HumanasService {
 		return obj.get();
 	}
 	
+	public Humanas insert(Humanas obj) {
+		return repository.save(obj);
+	}
 }
