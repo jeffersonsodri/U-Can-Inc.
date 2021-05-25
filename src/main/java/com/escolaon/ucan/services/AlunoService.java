@@ -32,4 +32,13 @@ public class AlunoService {
 		return repository.save(obj);
 	}
 	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public String cadastroAluno(){
+		   return "cadastroDeAluno";
+		}
+	
+	
 }

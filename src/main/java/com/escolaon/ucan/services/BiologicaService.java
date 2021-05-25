@@ -28,4 +28,8 @@ public class BiologicaService {
 		return obj.get();
 	}
 	
+	public Biologica insert(Biologica obj) {
+		return repository.save(obj);
+	}
+	
 }
