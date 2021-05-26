@@ -1,6 +1,5 @@
 package com.escolaon.ucan.resources;
 
-import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.escolaon.ucan.entities.Aluno;
 import com.escolaon.ucan.services.AlunoService;
@@ -47,6 +45,13 @@ public class AlunoResource {
 		mv.addObject("alunos", listaalunos);
 		return mv;
 	}
+	
+	@RequestMapping("/cadastroDeAlunos")
+	public ModelAndView cadastrarAluno() {
+		return new ModelAndView("cadastroDeAluno.html");
+	}
+	
+	
 
 //	@GetMapping(value = "/{id}")
 //	public ResponseEntity<Aluno> findById(@PathVariable Long id) {
@@ -58,8 +63,12 @@ public class AlunoResource {
 	@PostMapping
 	public ModelAndView insert(@RequestBody Aluno obj) {
 		obj = service.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return new ModelAndView("redirect:/cadastroDeAluno");
+		/*
+		 * URI uri =
+		 * ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand
+		 * (obj.getId()).toUri();
+		 */		
+		return new ModelAndView("redirect:/listaDeAlunos.html");
 	}
 
 	@DeleteMapping(value = "/{id}")
