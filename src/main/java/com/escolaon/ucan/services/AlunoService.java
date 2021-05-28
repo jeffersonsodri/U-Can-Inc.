@@ -36,9 +36,6 @@ public class AlunoService {
 		repository.deleteById(id);
 	}
 	
-	public String cadastroAluno(){
-		   return "cadastroDeAluno";
-		}
 	
 	
 }

@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -60,15 +58,13 @@ public class AlunoResource {
 //		return ResponseEntity.ok().body(obj);
 //	}
 
-	@PostMapping
-	public ModelAndView insert(@RequestBody Aluno obj) {
+	@RequestMapping(value= "/cadastrarAluno", method = RequestMethod.POST)
+	public ModelAndView insert( Aluno obj) {
 		obj = service.insert(obj);
-		/*
-		 * URI uri =
-		 * ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand
-		 * (obj.getId()).toUri();
-		 */		
-		return new ModelAndView("redirect:/listaDeAlunos.html");
+		ModelAndView mv = new ModelAndView("listaDeAlunos.html");
+		List<Aluno> listaalunos = service.findAll();
+		mv.addObject("alunos", listaalunos);
+		return mv;
 	}
 
 	@DeleteMapping(value = "/{id}")
